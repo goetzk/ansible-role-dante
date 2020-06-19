@@ -34,7 +34,10 @@
   become: yes
 
 - name: Add Service Script
-  copy: src=sockd.init dest=/etc/init.d/sockd mode="u+x,g+x,o+x"
+  template:
+    src: sockd.init
+    dest: /etc/init.d/sockd
+    mode: "u+x,g+x,o+x"
   become: yes
 
 - name: Enable Service
