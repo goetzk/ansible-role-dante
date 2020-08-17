@@ -1,0 +1,25 @@
+---
+
+# - name: Mask dante service until its configured
+#   systemd:
+#     name: danted
+#     masked: yes
+
+- name: Install dante package
+  apt:
+    name: dante-server
+    update_cache: yes
+
+# - name: Install configuration file
+#   template:
+#     src: danted.tmpl
+#     dest: /etc/danted.conf
+# 
+# - name: Unmask and Start service
+#   systemd:
+#     name: danted
+#     enabled: yes
+#     masked: no
+#     state: started
+
+

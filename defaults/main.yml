@@ -2,3 +2,18 @@
 dante_version: 1.4.1
 
 dante_working_dir: /tmp
+
+dante_source_install: False
+
+# For configuration
+# Interfaces must be specified
+# dante_internal_iface:
+# dante_external_iface:
+dante_port: 1080
+dante_user: sockd
+dante_clientmethod: none
+dante_socksmethod: username none
+dante_client_rules: []
+dante_socks_rules: []
+
+

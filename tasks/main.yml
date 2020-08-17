@@ -7,6 +7,24 @@
   register: dante_current
   ignore_errors: yes
 
-- name: Install Dante
-  include: dante.yml
-  when: dante_current.stdout.find('v{{ dante_version }}') == -1
+- name: Configure service
+  template:
+    src: danted.tmpl
+    dest: /etc/danted.conf
+
+- name: Create user for dante
+  user:
+    comment: Used for dante
+    create_home: no
+    name: {{ dante_user }}
+    system: yes
+
+- name: Install Dante from Source
+  include: source.yaml
+  when:
+    - dante_current.stdout.find('v{{ dante_version }}') == -1
+    - dante_source_install |bool
+
+- name: Install Dante from Packages
+  include: packages.yaml
+
